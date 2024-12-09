@@ -1,7 +1,14 @@
+import BudgetForm from "./components/BudgetForm";
+import Header from "./components/Header";
+
 function App() {
   return (
     <>
-      <h1 className="text-6xl">Control de Gastos</h1>
+      <Header/>
+
+      <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10 p-10">
+        <BudgetForm/>
+      </div>
     </>
   );
 }
