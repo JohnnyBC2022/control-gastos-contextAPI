@@ -7,9 +7,9 @@ function BudgetForm() {
     setBudget(e.target.valueAsNumber);
   };
 
-  const isValid = useMemo(()=>{
-    return isNaN(budget) || budget <=0
-  },[budget])
+  const isValid = useMemo(() => {
+    return isNaN(budget) || budget <= 0;
+  }, [budget]);
 
   return (
     <form className="space-y-5">
@@ -28,7 +28,6 @@ function BudgetForm() {
           name="budget"
           value={budget}
           onChange={handleChange}
-          
         />
       </div>
 
