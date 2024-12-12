@@ -15,37 +15,47 @@ function ExpenseForm() {
     date: new Date(),
   });
 
-  const [error, setError] = useState('')
-  const {dispatch} = useBudget()
+  const [error, setError] = useState("");
+  const { dispatch } = useBudget();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) =>{
-    const { name, value} = e.target
-    const isAmountField = ['amount'].includes(name)
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    const isAmountField = ["amount"].includes(name);
     setExpense({
       ...expense,
-      [name] : isAmountField ? +value : value
-    })
-  }
+      [name]: isAmountField ? +value : value,
+    });
+  };
 
-  const handleChangeDate = (value: Value) =>{
+  const handleChangeDate = (value: Value) => {
     setExpense({
       ...expense,
-      date: value
-    })
-  }
+      date: value,
+    });
+  };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) =>{
-    e.preventDefault()
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
     // Validar
-    if(Object.values(expense).includes('')){
-      setError('Todos los campos son obligatorios')
-      return
+    if (Object.values(expense).includes("")) {
+      setError("Todos los campos son obligatorios");
+      return;
     }
 
     // Agregar un nuevo gasto
-    dispatch({type: 'add-expense' , payload: {expense}})
-  }
+    dispatch({ type: "add-expense", payload: { expense } });
+
+    // Reiniciar el state:
+    setExpense({
+      amount: 0,
+      expenseName: "",
+      category: "",
+      date: new Date(),
+    });
+  };
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
@@ -66,6 +76,7 @@ function ExpenseForm() {
           className="bg-slate-100 p-2"
           name="expenseName"
           onChange={handleChange}
+          value={expense.expenseName}
         />
       </div>
 
@@ -80,6 +91,7 @@ function ExpenseForm() {
           className="bg-slate-100 p-2"
           name="amount"
           onChange={handleChange}
+          value={expense.amount}
         />
       </div>
 
@@ -92,6 +104,7 @@ function ExpenseForm() {
           className="bg-slate-100 p-2"
           name="category"
           onChange={handleChange}
+          value={expense.expenseName}
         >
           <option value="">-- Selecciona Categoría --</option>
           {categories.map((category) => (
