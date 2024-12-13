@@ -25,6 +25,9 @@ function ExpenseList() {
           <p className="text-gray-600 text-2xl font-bold my-5">
             Lista de Gastos
           </p>
+          <p className="my-5">
+            Desliza hacia la izquierda para borrar o a la derecha para actualizar
+          </p>
           {filteredExpenses.map((expense) => (
             <ExpenseDetail key={expense.id} expense={expense} />
           ))}
