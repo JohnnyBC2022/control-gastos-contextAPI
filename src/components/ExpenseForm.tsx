@@ -16,7 +16,7 @@ function ExpenseForm() {
   });
 
   const [error, setError] = useState("");
-  const [previousAmount, setPreviousAmount] = useState(0)
+  const [previousAmount, setPreviousAmount] = useState(0);
   const { state, dispatch, remainingBudget } = useBudget();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function ExpenseForm() {
         (currentExpense) => currentExpense.id === state.editingId
       )[0];
       setExpense(editingExpense);
-      setPreviousAmount(editingExpense.amount)
+      setPreviousAmount(editingExpense.amount);
     }
   }, [state.editingId]);
 
@@ -57,7 +57,7 @@ function ExpenseForm() {
     }
 
     // Validar no sobrepasar el presupuesto
-    if ((expense.amount - previousAmount) > remainingBudget) {
+    if (expense.amount - previousAmount > remainingBudget) {
       setError("Ese gasto supera el presupuesto");
       return;
     }
@@ -79,13 +79,13 @@ function ExpenseForm() {
       category: "",
       date: new Date(),
     });
-    setPreviousAmount(0)
+    setPreviousAmount(0);
   };
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
       <legend className="uppercase text-center text-2xl font-black border-b-4 border-blue-500 py-2">
-        {state.editingId ? 'Guardar Cambios': 'Nuevo Gasto'}
+        {state.editingId ? "Guardar Cambios" : "Nuevo Gasto"}
       </legend>
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
@@ -154,7 +154,7 @@ function ExpenseForm() {
       <input
         type="submit"
         className="bg-blue-600 cursor-pointer w-full p-2 text-white uppercase font-bold rounded-lg"
-        value={state.editingId ? "Guardar cambios" :"Registrar gasto"}
+        value={state.editingId ? "Guardar cambios" : "Registrar gasto"}
       />
     </form>
   );

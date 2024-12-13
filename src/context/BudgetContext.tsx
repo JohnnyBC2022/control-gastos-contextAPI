@@ -7,10 +7,10 @@ import {
 } from "../reducers/budget-reducers";
 
 type BudgetContextProps = {
-  state: BudgetState
-  dispatch: Dispatch<BudgetActions>
-  totalExpenses: number
-  remainingBudget: number
+  state: BudgetState;
+  dispatch: Dispatch<BudgetActions>;
+  totalExpenses: number;
+  remainingBudget: number;
 };
 
 type BudgetProviderProps = {

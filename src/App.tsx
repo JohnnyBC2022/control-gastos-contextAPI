@@ -27,7 +27,7 @@ function App() {
 
       {isValidBudget && (
         <main className="max-w-3xl mx-auto py-10">
-          <FilterByCategory/>
+          <FilterByCategory />
           <ExpenseList />
           <ExpenseModal />
         </main>
