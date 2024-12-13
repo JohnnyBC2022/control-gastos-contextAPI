@@ -129,7 +129,7 @@ function ExpenseForm() {
           className="bg-slate-100 p-2"
           name="category"
           onChange={handleChange}
-          value={expense.expenseName}
+          value={expense.category}
         >
           <option value="">-- Selecciona Categoría --</option>
           {categories.map((category) => (
